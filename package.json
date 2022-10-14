@@ -1,0 +1,17 @@
+{
+    "name": "ThoughtsAndBotsByHector",
+    "version": "1.0.0",
+    "description": "Custom made backend API for a future social media app",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified \" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "Hector De La Cruz",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "mongoose": "^6.6.5"
+    }
+}
