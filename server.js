@@ -1,8 +1,6 @@
 const express = require('express');
 const db = require('./config/connection');
 
-const { Book } = require('./models');
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 
