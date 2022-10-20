@@ -2,21 +2,41 @@ const {Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
     {
-        first: { Type: String, required: true},
-        last: {Type: String, required: true},
-        age: Number,
-        userName: {Type: String, required: true},
-    }
+        userName: {
+            Type: String, 
+            required: true,
+            max_length: 25,
+            unique: true,
+            Trimmed: true,
+            },
+            email: {
+                Type: String,
+                required: true,
+                unique: true,
+                //Validate Here
+            },
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'thoughts',
+            }
+        ],
+        friends:[ {
+            type: Schema.Types.ObjectId,
+            ref: 'user'
+        }]
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    },
 );
 
-userSchema.virtual('fullName')
+userSchema.virtual('friendCount')
 .get(function()  {
-    return `${this.first} ${this.last}`;
-})
-.set(function(v) {
-    const first = v.split(' ')[0];
-    const last = v.split(' ')[1];
-    this.set({first, last});
+    return this.friends.length;
 });
 
 const User = model('user', userSchema);
