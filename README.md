@@ -14,7 +14,7 @@
 
 
 ## Video
-https://drive.google.com/file/d/19bXXBdsO_kG9nF4eq0GXSEWrWy0Uuo08/view 
+[Click here for the how-to-use video](https://drive.google.com/file/d/19bXXBdsO_kG9nF4eq0GXSEWrWy0Uuo08/view) 
 
 ## Description
 This is a project curated to be the backend of a social network API that utilizes MongoDB. It allows for the CRUD of Users, Thoughts and reactions to thoughts. It also allows for users to add and delete their friends if they desire to. 
