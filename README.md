@@ -31,9 +31,9 @@ Download the project via ZIP on the github link below. Make sure you have MongoD
 ## Questions
 If you have questions feel free to reach out
 
-Email: [Hdelacruz1999@gmail.com](Hdelacruz1999@gmail.com) 
+Email: [Hdelacruz1999@gmail.com](mailto:Hdelacruz1999@gmail.com) 
 
-Github: [Hdela99](Hdela99)
+Github: [Hdela99](https://github.com/Hdela99/ThoughtsAndBotsByHector)
 
 ## License
 Licensed under the [ISC](https://choosealicense.com/licenses/isc/) license.
