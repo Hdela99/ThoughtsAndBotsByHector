@@ -1,62 +1,37 @@
-const {Schema, model} = require('mongoose');
-const {User} = require('./User.js');
+const mongoose = require('mongoose');
+const reactionSchema = require('./Reactions.js');
 
-const thoughtsSchema = new Schema(
+var tunedDate = function (date) {
+    return date.toLocaleString()
+};
+
+
+const thoughtsSchema = new mongoose.Schema(
     {
-        creationDate: {
+        thoughtText: {
+            type: String, 
+            minLength: 1,
+            maxLength: 300,
+            required: true
+        },
+
+        createdAt: {
             type: Date,
             default: Date.now,
+            get: tunedDate
         },
-        title: {
-            Type: String, 
+
+        username: {
+            type: String,
             required: true
         },
-        content: {
-            Type: String, 
-            required: true
-        },
-        owner: {
-            type: Schema.Types.ObjectId,
-            ref: 'user',
-        },
-        meta: {
-            likes: Number,
-            comments: Number,
-            downvotes: Number,
-            reports: Number,
-        }
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        id: false,
-    }
-);
+        reactions: [reactionSchema],
+    });
 
-thoughtsSchema
-.virtual('likeCount')
-.get(function() {
-    return this.meta.likes;
-});
+    thoughtsSchema
+    .virtual('reactionCount').get(function() {
+        return this.reactions.length;
+    });
 
-thoughtsSchema
-.virtual('commentCount')
-.get(function() {
-    return this.meta.comments;
-});
-
-thoughtsSchema
-.virtual('downvoteCount')
-.get(function() {
-    return this.meta.downvotes;
-});
-
-thoughtsSchema
-.virtual('reportCount')
-.get(function() {
-    return this.meta.reports;
-});
-
-const Thoughts = model('thoughts', thoughtsSchema);
+const Thoughts = mongoose.model('Thoughts', thoughtsSchema);
 module.exports = Thoughts;
